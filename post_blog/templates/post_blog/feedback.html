@@ -1,0 +1,8 @@
+{% extends 'post_blog/base.html' %}
+
+{% block content %}
+    {% for i in fb %}
+        {{i.author}}
+        {{i.text}}
+    {% endfor %}
+{% endblock %}

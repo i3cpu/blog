@@ -1,0 +1,27 @@
+{% extends 'post_blog/base.html' %}
+{% block content %}
+        <div style="text-align: center; margin: 40px 50px 0px 50px;">
+            <div style="border:2px solid black; margin: 5px; padding: 30px; border-radius: 27px;text-align: center;">
+                <h1 style="border-bottom: 1px solid black;">{{post.title}}</h1>
+                <h3>{{post.text}}</h3> 
+                <h4>{{post.published_data}}</h4><br> 
+            </div>
+            <br><br><br>
+            <a style="border:2px solid black ; padding: 15px ; margin:220px; text-decoration: none; color: black; border-radius: 20px; background-color: yellow;" href="{% url 'editpost' post_pk=post.pk %}">Edit post</a>
+            <a style="border:2px solid black ; padding: 15px ; margin:220px; text-decoration: none; color: black; border-radius: 20px; background-color: yellow;" href="{% url 'deletepost' post_pk=post.pk %}">Delete post</a>
+            
+            <a style=" border:2px solid black ; padding: 15px ; margin:220px; text-decoration: none; color: black; border-radius: 20px; background-color: yellow;" href="{% url 'post_list' %}">Back to post list</a>
+        </div><br><br>
+        <a href="{% url 'feedback' post_pk=post.pk %}">Otzivi</a>
+        <div style="border:1px solid black; margin: 5px; padding: 30px;padding-top: 0px; border-radius: 27px;text-align: center; width: 300px;margin-left: 50px;">
+            <p>Comments to post:</p>
+            <!-- <form method="post">
+                {% csrf_token %}
+                {{ forms.as_p }}
+                <input type="submit" name="create">
+            </form> -->
+            {% for i in comments %}
+                {{i.text}}
+            {% endfor %}
+        </div> 
+{% endblock %}
